@@ -9,23 +9,16 @@ from .google_search import google
 API_KEY = "AIzaSyCsBmUzB-KWShCbWHCWTOKSYbGjHFd8s2M"
 CSE_ID = "361ef2027456b4ed6"
 
+
 #  events
+
+
 class EventList(APIView):
 
-
-    # # lists all events
-    # @api_view(['GET'])
-    # def get_hello_world(self, request):
-    #     payload = {"body": "Hello world"}
-    #     return Response(payload)
-
     def get(self, request):
-        # location = '33403'
-        # if request.GET['zipcode']:
-        #     location = str(request.GET['zipcode'])
-        # elif request.GET['city']:
-        #     location = str(request.GET['city'])
-        payload = google("salsa dancing events", API_KEY, CSE_ID)
+
+        zipcode = request.GET.get('zipcode', '')
+        payload = google(f'salsa dancing events {zipcode}', API_KEY, CSE_ID)
         return Response(payload)
 
 
