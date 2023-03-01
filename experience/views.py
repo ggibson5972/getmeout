@@ -16,8 +16,8 @@ CSE_ID = "361ef2027456b4ed6"
 class EventList(APIView):
 
     def get(self, request):
-
         zipcode = request.GET.get('zipcode', '')
+        assert len(zipcode) == 5, "Invalid Zipcode"
         payload = google(f'salsa dancing events {zipcode}', API_KEY, CSE_ID)
         return Response(payload)
 
