@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>Get Me Out of the House</h1>
+<h3>A tool to find where your favorite activity is happening TONIGHT</h3>
+<form action="{% url 'events_list' %}" method="get" name="form">
+    <div class="form-group">
+        <label for="zipcode">zipcode:</label>
+        <input id="zipcode" name="zipcode" type="text"><br><br>
+    </div>
+    <button class="btn btn-default" type="submit">Search</button>
+</form>
+</body>
+</html>
