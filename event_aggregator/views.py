@@ -1,6 +1,6 @@
 import json
 
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, render, redirect
 from django.template import loader
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -18,6 +18,11 @@ CSE_ID = "361ef2027456b4ed6"
 
 def index(request):
     return render(request, 'index.html')
+
+
+def get_zipcode(request):
+    zipcode = request.POST.get('zipcode')
+    return redirect('events_list')
 
 
 #  events
