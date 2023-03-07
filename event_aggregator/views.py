@@ -10,10 +10,10 @@ import os
 from urllib.request import urlopen
 import re as r
 from .google import search_engine
+from decouple import config
 
-
-API_KEY = "AIzaSyCsBmUzB-KWShCbWHCWTOKSYbGjHFd8s2M"
-CSE_ID = "361ef2027456b4ed6"
+API_KEY = config('API_KEY')
+CSE_ID = config('CSE_ID')
 
 
 def index(request):
