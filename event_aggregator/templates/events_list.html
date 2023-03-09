@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Events</title>
+</head>
+<body>
+<h1>Events</h1>
+<div>
+    {% for result in search_results %}
+    <a href={{result.link}}>{{result.title}}</a>
+    <img src={{result.pagemap.cse_thumbnail.0.src}}><br><br>
+    {% endfor %}
+</div>
+</body>
+</html>
