@@ -1,18 +1,11 @@
 import json
 
-from django.shortcuts import get_object_or_404, render, redirect
-from django.template import loader
+from decouple import config
+from django.shortcuts import render
 from rest_framework.views import APIView
-from rest_framework.response import Response
-from rest_framework import status
-import os
 from urllib.request import urlopen
-import re as r
-
-from typing import Dict, Any
 
 from event_aggregator.google import search_engine
-from decouple import config
 
 
 API_KEY = config('API_KEY')
