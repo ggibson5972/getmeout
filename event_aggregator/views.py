@@ -8,8 +8,12 @@ from rest_framework import status
 import os
 from urllib.request import urlopen
 import re as r
-from .google import search_engine
+
+from typing import Dict, Any
+
+from event_aggregator.google import search_engine
 from decouple import config
+
 
 API_KEY = config('API_KEY')
 CSE_ID = config('CSE_ID')
@@ -31,17 +35,15 @@ class EventList(APIView):
         assert len(str(zipcode)) == 5, f'Invalid Zipcode: {zipcode}'
 
         # only get first 10 results
-        payload = search_engine(f'salsa dancing events near {zipcode}', API_KEY, CSE_ID)[:10]
-        return Response(payload)
-
-    def post(self, request):
-        data = request.data
-        return render(request, 'events_list.html', data)
+        search_results: list = search_engine(f'salsa dancing events near {zipcode}', API_KEY, CSE_ID)[:10]
+        # for image, ['pagemap']['cse_thumbnail'][0]['src']
+        # return Response(search_results)
+        return render(request, 'events_list.html', context={'search_results': search_results})
 
 
 # Helper Methods
 
-def _get_estimated_location():
+def _get_estimated_location() -> str:
     url = 'http://ipinfo.io/json'
     response = urlopen(url)
     data = json.load(response)

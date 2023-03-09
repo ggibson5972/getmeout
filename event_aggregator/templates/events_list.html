@@ -5,8 +5,11 @@
 </head>
 <body>
 <h1>Events</h1>
-    <form method="POST" id="salsa_events">
-        {{data}}
-    </form>
+<div>
+    {% for result in search_results %}
+    <a href={{result.link}}>{{result.title}}</a>
+    <img src={{result.pagemap.cse_thumbnail.0.src}}><br><br>
+    {% endfor %}
+</div>
 </body>
 </html>
