@@ -1,3 +1,4 @@
 pytest==7.2.2
 Django~=3.2.18
 djangorestframework~=3.14.0
+eventbrite~=3.3.5

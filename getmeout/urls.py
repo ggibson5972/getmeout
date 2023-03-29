@@ -25,7 +25,7 @@ urlpatterns = [
     path('api-auth/', include('rest_framework.urls')),
     url(r'^events/$', views.EventList.as_view(), name='events_list'),
     path('', views.index, name='index'),
-    url(r'^results/$', views.EventList.as_view(), name='results')
-
+    url(r'^results/$', views.EventList.as_view(), name='results'),
+    # url(r'^eventbrite_auth/$', views.EventbriteAuth.as_view(), name='eventbrite_auth'),
 ]
 urlpatterns = format_suffix_patterns(urlpatterns)
